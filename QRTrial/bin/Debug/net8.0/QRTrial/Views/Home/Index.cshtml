@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Upload Invitation and Generate QR Code";
+}
+
+<h2>Upload Invitation Image</h2>
+
+<form asp-controller="Home" asp-action="UploadImage" method="post" enctype="multipart/form-data">
+    <input type="file" name="imageFile" accept="image/*" required />
+    <button type="submit">Upload & Generate QR</button>
+</form>
+
+@if (ViewBag.ImagePath != null)
+{
+    <h3>Modified Invitation</h3>
+    <img src="@ViewBag.ImagePath" alt="Invitation with QR Code" style="max-width: 600px; display: block; margin-top: 10px;" />
+    <br />
+    <a href="@ViewBag.ImagePath" download="Modified_Invitation.jpg">Download Modified Invitation</a>
+}
